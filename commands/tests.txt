@@ -1,0 +1,8 @@
+py -3 tests\mytest.py
+pytest -v # verbose
+
+pytest -v -s # verbose, print include 
+
+pytest -v -s path_to_file  # only test from specific file
+pytest -v -s --disable-warnings  # disable warnings
+pytest -v -x -s --disable-warnings  #  stop test after first failure

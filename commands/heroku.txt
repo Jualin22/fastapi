@@ -1,0 +1,21 @@
+heroku login  # login to heroku
+heroku create fastapi-jualin  # create new app called fastapi-jualin
+heroku apps --help  # help for apps command
+heroku apps:info  # get app infos
+
+git remote add heroku https://git.heroku.com/fastapi-jualin.git  # Add a remote (https://git.heroku.com/fastapi-jualin.git) to your local repository with the heroku
+
+git push heroku master  # push changes to heroku
+
+# run these two commands if there is an error the first time
+git remote rm heroku  # remove remote
+git remote add heroku https://git.heroku.com/fastapi-jualin.git
+
+heroku logs -t  # get heroku logs as a stream
+
+heroku addons:create heroku-postgresql:hobby-dev  # install postgres
+
+heroku ps:restart  # restart app
+
+https://fastapi-jualin.herokuapp.com/
+

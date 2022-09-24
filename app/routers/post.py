@@ -138,7 +138,6 @@ def update_post(
     current_user: str = Depends(oauth2.get_current_user),
     db: Session = Depends(get_db),
 ):
-
     user_id = current_user["id"]
     post_dict = updated_post.dict()
 
@@ -165,7 +164,7 @@ def update_post(
         else:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail=f"User with id {post_dict['owner_id']} is the owner of the post",
+                detail=f"User with id {result.owner_id} is the owner of the post",
             )
 
     elif not result:

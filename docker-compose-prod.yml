@@ -1,0 +1,31 @@
+version: "3" #version of compose
+services: # containers are listed under services
+  api: # name of python container
+    image: jualin22/fastapi
+    build: . # build custom image with dockerfile in current directory
+    depends_on:
+      - postgres # postgres container should be set up first
+    ports:
+      - 80:8000
+    # command: uvicorn app.main.app --host 0.0.0.0 --port 8000 # overwrite command from Dockerfile
+    # env_file: # files with environment variables
+    #   - ./.env
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME} # IP adresse of postgres container env_var => ${}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+  
+  postgres: # name of postgres container
+    image: postgres # pre defined image
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data # path in container that postgres will write to
+volumes:
+  postgres-db:

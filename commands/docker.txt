@@ -1,0 +1,26 @@
+docker build -t fastapi .  # build image fastapi from dockerfile in current directory (.)
+docker build --help  # help for build
+
+
+docker image ls  # list images
+docker ps -a  # show all containers
+
+
+docker-compose up -d  # create and start container running in background (-d) using docker-compose.yml
+docker-compose -f docker-compose-dev.yml up -d  # building container with custom compose file (docker-compose-dev.yml not just docker-compose)
+docker-compose up --build # set up container and force to build image
+
+docker-compose down  # stop and remove resources using docker-compose.yml
+docker-compose -f docker-compose-dev.yml down  # stop and remove resources using custom compose file (docker-compose-dev.yml not just docker-compose)
+
+
+docker login  # log into docker hub
+docker image tag fastapi jualin22/fastapi # rename image fastapi to docker hub repo name jualin22/fastapi
+docker push jualin22/fastapi # push image to docker hub
+
+
+
+# extra
+docker evec -it fastapi_api_1 bash # enter interactive mode and overwrite default command of container
+cd app/
+cat

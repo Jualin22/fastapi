@@ -64,7 +64,6 @@ def vote(
         return {"detail": "Vote was added."}
 
     elif result_vote and vote_dict["dir"] == 0:
-
         sql_delete_one = (
             """delete from votes where "post_id"=%s and "user_id"=%s RETURNING *;"""
             % (vote_dict["post_id"], user_id)
