@@ -9,5 +9,13 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v2
-      - name: say hi
-        run: echo "hello"
+      # - name: say hi
+      #   run: echo "hello"
+      - name: Install python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9' 
+      - name: update pip
+        run: python -m pip istall --upgrade pip
+      - name: Install all dependencies
+        run: pip install -r requirements.txt
