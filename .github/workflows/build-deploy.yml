@@ -23,10 +23,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          # POSTGRESS_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
-          # POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
-          POSTGRESS_PASSWORD: Postgress22
-          POSTGRES_DB: fastapi
+          POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+          POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
+
         ports:
           - 5432:5432
         options: >-
