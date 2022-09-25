@@ -8,7 +8,7 @@ from jose import jwt
 
 def test_root(client):
     res = client.get("/")
-    assert res.json().get("message") == "Welcome to my API"
+    assert res.json().get("message") == "Succesfully deployed from CI/CD pipeline"
     assert res.status_code == 200
 
 
