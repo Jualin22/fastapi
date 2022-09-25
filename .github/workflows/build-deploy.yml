@@ -23,8 +23,10 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRESS_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
-          POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
+          # POSTGRESS_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+          # POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
+          POSTGRESS_PASSWORD: Postgress22
+          POSTGRES_DB: fastapi
         ports:
           - 5432:5432
         options: >-
@@ -34,7 +36,7 @@ jobs:
             --health-retries 5
 
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: pulling git repo
         uses: actions/checkout@v2
